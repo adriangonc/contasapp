@@ -10,5 +10,4 @@ public class ContasappApplication {
 		SpringApplication.run(ContasappApplication.class, args);
 	}
 
-	
 }
