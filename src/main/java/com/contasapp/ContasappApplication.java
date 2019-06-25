@@ -1,4 +1,4 @@
-package com.contasapp.contasapp;
+package com.contasapp;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
