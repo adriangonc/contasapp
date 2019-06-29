@@ -18,13 +18,16 @@ public class Payment implements Serializable{
 	@GeneratedValue(
 	    strategy = GenerationType.AUTO
 	)
-	@Column(
-	    columnDefinition = "NUMERIC(19,0)"
-	)
+	@Column(name = "ID")
 	private Long id;
 	
+	@Column(name = "DESCRIPTION")
 	private String description;
+	
+	@Column(name = "DATA")
 	private String data;
+	
+	@Column(name = "NOTE")
 	private String note;
 	
 	public String getDescricao() {
@@ -33,7 +36,7 @@ public class Payment implements Serializable{
 			public void setDescricao(String descricao) {
 				this.note = descricao;
 	}
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	public void setId(Long id) {
