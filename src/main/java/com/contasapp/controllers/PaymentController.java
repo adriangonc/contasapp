@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.contasapp.models.Payment;
 import com.contasapp.repository.IPaymentRepository;
@@ -25,4 +26,12 @@ public class PaymentController {
 		return "redirect:/createPayment";
 	}
 
+	@RequestMapping("/payments")
+	public ModelAndView listPayments() {
+		ModelAndView mv = new ModelAndView("/index");
+		Iterable<Payment> payments = pr.findAll();
+		mv.addObject("payments", payments);
+		return mv;
+	}
+	
 }

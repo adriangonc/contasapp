@@ -1,5 +1,19 @@
-<html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<!-- HTML5 -->
+<meta charset="utf-8" />
 <body>
-<h2>Hello world with spring boot s2</h2>
+	<h2>Lista de pagamentos</h2>
+	<h3><a href="/createPayment">Cadastrar pagamento</a></h3>
+	
+	<div th:each="payment : ${payments}">
+		<div class="row">
+			<p><span th:text="${payment.description}"> </span></p>
+			<p><span th:text="${payment.data}"> </span></p>
+			<p><span th:text="${payment.note}"> </span></p>
+		</div>
+	
+	</div>
+	
 </body>
 </html>
