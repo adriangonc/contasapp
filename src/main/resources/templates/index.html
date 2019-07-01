@@ -2,18 +2,51 @@
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <!-- HTML5 -->
 <meta charset="utf-8" />
+
+<head>
+<!--Import Google Icon Font-->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<!--Import materialize.css-->
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+
+<!--Let browser know website is optimized for mobile-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+</head>
+
 <body>
 	<h2>Lista de pagamentos</h2>
-	<h3><a href="/createPayment">Cadastrar pagamento</a></h3>
 	
-	<div th:each="payment : ${payments}">
-		<div class="row">
-			<p><span th:text="${payment.description}"> </span></p>
-			<p><span th:text="${payment.data}"> </span></p>
-			<p><span th:text="${payment.note}"> </span></p>
-		</div>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Mês</th>
+				<th>Data</th>
+				<th>Observação</th>
+			</tr>
+
+		</thead>
+		<tbody>
+			<tr th:each="payment : ${payments}">
+
+				<td><span th:text="${payment.description}"> </span></td>
+				<td><span th:text="${payment.data}"> </span></td>
+				<td><span th:text="${payment.note}"> </span></td>
+				<td> <a class="waves-effect waves-light btn-small"> <i class="material-icons left">list</i>Contas</a> </td>
+			</tr>
+
+		</tbody>
+
+	</table>
 	
-	</div>
-	
+	<h4>
+		<a href="/createPayment" class="btn-floating btn-large waves-effect waves-light red"><i
+			class="material-icons left">add</i>Cadastrar pagamento</a>
+	</h4>
+	<!--JavaScript at end of body for optimized loading-->
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
 </html>
