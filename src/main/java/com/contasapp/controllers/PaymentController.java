@@ -2,6 +2,7 @@ package com.contasapp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,6 +32,14 @@ public class PaymentController {
 		ModelAndView mv = new ModelAndView("/index");
 		Iterable<Payment> payments = pr.findAll();
 		mv.addObject("payments", payments);
+		return mv;
+	}
+	
+	@RequestMapping("/{id}")
+	public ModelAndView paymetDetails(@PathVariable("id") long id) {
+		Payment payment = pr.findById(id);
+		ModelAndView mv = new ModelAndView("payment/paymentDetail");
+		mv.addObject("payment", payment);
 		return mv;
 	}
 	
