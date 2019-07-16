@@ -1,12 +1,13 @@
 package com.contasapp.models;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Payment implements Serializable {
@@ -15,17 +16,24 @@ public class Payment implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "ID")
 	private Long id;
 
-	@Column(name = "DESCRIPTION")
 	private String description;
 
-	@Column(name = "DATA")
 	private String data;
 
-	@Column(name = "NOTE")
 	private String note;
+	
+	@OneToMany
+	private List<Bill> bills;
+
+	public List<Bill> getBills() {
+		return bills;
+	}
+
+	public void setBills(List<Bill> bills) {
+		this.bills = bills;
+	}
 
 	public String getDescricao() {
 		return note;
@@ -33,14 +41,6 @@ public class Payment implements Serializable {
 
 	public void setDescricao(String descricao) {
 		this.note = descricao;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -73,6 +73,14 @@ public class Payment implements Serializable {
 
 	public void setNote(String note) {
 		this.note = note;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

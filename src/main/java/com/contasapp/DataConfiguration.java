@@ -19,7 +19,7 @@ public class DataConfiguration {
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/contasapp?useTimezone=true&serverTimezone=UTC&&useSSL=false&&createDatabaseIfNotExist=true");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/contasapp?useTimezone=true&serverTimezone=UTC&&useSSL=false&&createDatabaseIfNotExist=false");
         dataSource.setUsername("root");
         dataSource.setPassword("desenv");
         return dataSource;
@@ -30,7 +30,7 @@ public class DataConfiguration {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
 		adapter.setDatabase(Database.MYSQL);
 		adapter.setShowSql(true);
-		adapter.setGenerateDdl(true);
+		adapter.setGenerateDdl(false);
 		adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
 		adapter.setPrepareConnection(true);
 		return adapter;
