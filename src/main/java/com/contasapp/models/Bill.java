@@ -1,6 +1,9 @@
 package com.contasapp.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -8,6 +11,7 @@ import javax.persistence.ManyToOne;
 public class Bill {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codeBill;
 	
 	private String billName;
@@ -16,7 +20,8 @@ public class Bill {
 	
 	private double value;
 	
-	private Long paymentCode;
+	@Column(name="payment_id", insertable =  false , updatable = false, nullable = false, unique = false)
+	private Long payment_id;
 	
 	@ManyToOne
 	private Payment payment;
@@ -70,11 +75,11 @@ public class Bill {
 	}
 
 	public Long getPaymentCode() {
-		return paymentCode;
+		return payment_id;
 	}
 
 	public void setPaymentCode(Long paymentCode) {
-		this.paymentCode = paymentCode;
+		this.payment_id = paymentCode;
 	}
 
 	
