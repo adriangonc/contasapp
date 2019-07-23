@@ -45,6 +45,10 @@ public class PaymentController {
 		Payment payment = pr.findById(id);
 		ModelAndView mv = new ModelAndView("payment/paymentDetail");
 		mv.addObject("payment", payment);
+		
+		Iterable<Bill> bills = br.findByPayment(payment);
+		mv.addObject("bills", bills);
+		
 		return mv;
 	}
 	
@@ -53,6 +57,7 @@ public class PaymentController {
 		Payment payment = pr.findById(id);
 		bill.setPayment(payment);
 		bill.setPaymentCode(payment.getId());
+		bill.setId(null);
 		br.save(bill);
 		return "redirect:/{id}";
 	}

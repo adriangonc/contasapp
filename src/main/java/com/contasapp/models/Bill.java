@@ -1,5 +1,7 @@
 package com.contasapp.models;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +9,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import org.springframework.data.domain.Persistable;
+
 @Entity
-public class Bill {
+public class Bill implements Persistable<Serializable>{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codeBill;
@@ -46,7 +52,7 @@ public class Bill {
 		this.payment = payment;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.codeBill = id;
 	}
 
@@ -80,6 +86,11 @@ public class Bill {
 
 	public void setPaymentCode(Long paymentCode) {
 		this.payment_id = paymentCode;
+	}
+
+	@Override
+	public boolean isNew() {
+		return false;
 	}
 
 	
