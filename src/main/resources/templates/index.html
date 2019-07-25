@@ -39,7 +39,7 @@
 				<td><a th:href="${(#mvc.url('PC#paymetDetails').arg(0, payment.id)).build()}"><span th:text="${payment.description}"> </span></a></td>
 				<td><span th:text="${payment.data}"> </span></td>
 				<td><span th:text="${payment.note}"> </span></td>
-				<td> <a class="waves-effect waves-light btn-small"> <i class="material-icons left">list</i>Contas</a> </td>
+				<td> <a th:href="${(#mvc.url('PC#paymetDetails').arg(0, payment.id)).build()}" class="waves-effect waves-light btn-small"> <i class="material-icons left">list</i>Contas</a> </td>
 			</tr>
 
 		</tbody>

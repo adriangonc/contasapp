@@ -8,7 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.domain.Persistable;
 
 @Entity
@@ -20,10 +22,12 @@ public class Bill implements Persistable<Serializable>{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long codeBill;
 	
+	@NotEmpty
 	private String billName;
 	
 	private String note;
 	
+	@NotNull	
 	private double value;
 	
 	@Column(name="payment_id", insertable =  false , updatable = false, nullable = false, unique = false)

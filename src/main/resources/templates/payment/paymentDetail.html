@@ -18,67 +18,72 @@
 
 <body>
 	<h2>Pagamento</h2>
-	
+
 	<h4>
 		<a href="/payments" class="waves-effect waves-light btn"><i
 			class="material-icons left">arrow_back</i>Voltar</a>
 	</h4>
-	
-	<div th:each="payment : ${payment}" >
-		<div class="row" >
-		<blockquote>
-			<p>Descrição: <span th:text="${payment.description}"></span></p>
-			<p>Data: <span th:text="${payment.data}"></span></p>
-			<p>Observações: <span th:text="${payment.note}"></span></p>
+
+	<div th:each="payment : ${payment}">
+		<div class="row">
+			<blockquote>
+				<p>
+					Descrição: <span th:text="${payment.description}"></span>
+				</p>
+				<p>
+					Data: <span th:text="${payment.data}"></span>
+				</p>
+				<p>
+					Observações: <span th:text="${payment.note}"></span>
+				</p>
 			</blockquote>
 		</div>
 	</div>
-	
-	
+
+	<th:block th:include="validationMessenge"></th:block>
+
 	<form method="post">
-	
-		<!-- Conta: <input type="text" value="" name="billName"/>
-		Valor: <input type="number" value="" name="value"/>
-		Observação: <input type="text" value="" name="note"/> -->
-		
+
 		<div class="input-field col s12">
-          <input id="nameBill" type="text" value="" name="billName" class="validate"/>
-          <label for="nameBill">Nome da conta</label>
-         </div>
-         <div class="input-field col s12">
-          <input id="valueBill" type="number" value="" name="value" class="validate"/>
-          <label for="valueBill">Valor da conta</label>
-         </div>
-         <div class="input-field col s12"> 
-          <input id="note" type="text" value="" name="note" class="validate"/>
-          <label for="note">Observações</label>
-        </div>
-		
+			<input id="nameBill" type="text" value="" name="billName"
+				class="validate" /> <label for="nameBill">Nome da conta</label>
+		</div>
+		<div class="input-field col s12">
+			<input id="valueBill" type="number" placeholder="1.00" step="0.01" value="" name="value"
+				class="validate" /> <label for="valueBill">Valor da conta</label>
+		</div>
+		<div class="input-field col s12">
+			<input id="note" type="text" value="" name="note" class="validate" />
+			<label for="note">Observações</label>
+		</div>
+
 		<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
-		
-		
-		
+
 	</form>
-	
-	<h5 >Contas do mês: </h5>
-	
+
+	<h5>Contas do mês:</h5>
+
 	<div class="container" th:each="bill : ${bills}">
-	  <div class="row">
-	    <div class="col s12 ">
-	      <div class="card blue-grey darken-1">
-	        <div class="card-content white-text">
-	          <span th:text="${bill.billName}" class="card-title" ></span>
-	          <p>R$ <span th:text="${bill.value}"></span> </p>
-	          
-	        </div>
-	        <div class="card-action">
-	          <p>Observação: <span th:text="${bill.note}"></span> </p>
-	        </div>
-	      </div>
-	    </div>
-	  </div>
-     </div>       
-	
+		<div class="row">
+			<div class="col s12 ">
+				<div class="card blue-grey darken-1">
+					<div class="card-content white-text">
+						<span th:text="${bill.billName}" class="card-title"></span>
+						<p>
+							R$ <span th:text="${bill.value}"></span>
+						</p>
+
+					</div>
+					<div class="card-action">
+						<p>
+							Observação: <span th:text="${bill.note}"></span>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
 </body>
