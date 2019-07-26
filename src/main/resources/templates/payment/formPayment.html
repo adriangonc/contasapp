@@ -11,12 +11,27 @@
 <link type="text/css" rel="stylesheet"
 	href="materialize/css/materialize.min.css" media="screen,projection" />
 
+<link rel="stylesheet" href="style/style.css" />
+
 <!--Let browser know website is optimized for mobile-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 </head>
 <body>
+	<header>
+		<nav>
+			<div class="nav-wrapper paymentNavBar">
+				<a href="#" class="brand-logo">Pagamentos</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="/payments">Início</a></li>
+					<li><a href="#">Relatórios</a></li>
+				</ul>
+			</div>
+		</nav>
+	</header>
+
 	<h1>Cadastro de Pagamentos</h1>
+
 	<h3>
 		<a href="/payments" class="waves-effect waves-light btn"><i
 			class="material-icons left">arrow_back</i>Voltar</a>
@@ -25,14 +40,14 @@
 
 		Descrição: <input type="text" value="" name="description" />
 		<div class="row">
-		<div class="input-field col s3">
-			Data: <input type="date" value="" name="data" /> 
+			<div class="input-field col s3">
+				Data: <input type="date" value="" name="data" />
+			</div>
+			<div class="input-field col s6">
+				Observação: <input type="text" value="" name="note" />
+			</div>
 		</div>
-		<div class="input-field col s6">
-			Observação: <input type="text" value="" name="note" />
-		</div>
-		</div>
-		<button type="submit" class="waves-effect waves-light btn">Salvar</button>
+		<button type="submit" class="waves-effect waves-light btn ">Salvar</button>
 	</form>
 </body>
 </html>

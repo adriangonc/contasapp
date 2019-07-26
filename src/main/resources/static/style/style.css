@@ -1,0 +1,25 @@
+.cardPaymentDetail{
+	/* box-shadow: 0px 0px 4px gray; */
+	margin: 5px;
+}
+
+.paymentNavBar{
+	background-color: gray;
+}
+
+.buttonDefalt{
+	background-color: red;
+}
+
+.buttonSave{
+	background-color: navy;
+}
+
+.divDeletEdit{
+	float: right;
+}
+
+.btnDeletEdit{
+	background-color: black;
+	margin-top: 15px;
+}
