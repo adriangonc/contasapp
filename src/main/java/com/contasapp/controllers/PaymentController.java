@@ -72,5 +72,21 @@ public class PaymentController {
 		attributes.addFlashAttribute("mensagem", "Conta adicionada com sucesso!");
 		return "redirect:/{id}";
 	}
+	
+	@RequestMapping("/deletePayment")
+	public String deletePayment(Long code) {
+		pr.deleteById(code);		
+		return "redirect:/payments";
+	}
+	
+	@RequestMapping("/deleteBill")
+	public String deleteBill(Long code) {
+		Bill bill = br.findByCodeBill(code);
+		Payment payment = bill.getPayment();
+		br.deleteById(code);
+		return "redirect:/" + payment.getId().toString();
+	}
+	
+	
 
 }

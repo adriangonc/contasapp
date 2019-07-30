@@ -82,9 +82,9 @@
 					<div class="card-content white-text">
 						<div class="divDeletEdit">
 							<a class="btn-floating btn-small waves-effect waves-light black"><i
-								class="material-icons">edit</i></a> <br></br> <a
-								class="btn-floating btn-small waves-effect waves-light black btnDeletEdit"><i
-								class="material-icons">delete</i></a>
+								class="material-icons">edit</i></a> <br></br> <a th:href="${(#mvc.url('PC#deleteBill').arg(0, bill.codeBill)).build()}" 
+					class="btn-floating btn-small waves-effect waves-light black btnDeletEdit"><i
+						class="material-icons">delete</i></a>
 						</div>
 						<span th:text="${bill.billName}" class="card-title"></span>
 						<p>

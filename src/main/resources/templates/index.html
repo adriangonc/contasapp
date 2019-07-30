@@ -54,6 +54,9 @@
 					class="waves-effect waves-light btn-small"> <i
 						class="material-icons left">list</i>Contas
 				</a></td>
+				<td><a th:href="${(#mvc.url('PC#deletePayment').arg(0, payment.id)).build()}" 
+					class="btn-floating btn-small waves-effect waves-light black btnDeletEdit"><i
+						class="material-icons">delete</i></a></td>
 			</tr>
 
 		</tbody>
