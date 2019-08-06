@@ -38,7 +38,7 @@ public class PaymentController {
 
 	@RequestMapping("/payments")
 	public ModelAndView listPayments() {
-		ModelAndView mv = new ModelAndView("/listPayments");
+		ModelAndView mv = new ModelAndView("payment/listPayments");
 		Iterable<Payment> payments = pr.findAll();
 		mv.addObject("payments", payments);
 		return mv;
