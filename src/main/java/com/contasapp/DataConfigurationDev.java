@@ -14,12 +14,12 @@ public class DataConfigurationDev {
 	
 	@Bean
     public BasicDataSource dataSource() throws URISyntaxException {
-       String dbUrl = "jdbc:postgresql://localhost:5432/postgres"; 
+       String dbUrl = "jdbc:h2:file:~/h2db"; 
 
         BasicDataSource basicDataSource = new BasicDataSource();
         basicDataSource.setUrl(dbUrl);
-        basicDataSource.setUsername("postgres");
-        basicDataSource.setPassword("desenv");
+        basicDataSource.setUsername("h2sa");
+        basicDataSource.setPassword("admin");
 
         return basicDataSource;
     }
