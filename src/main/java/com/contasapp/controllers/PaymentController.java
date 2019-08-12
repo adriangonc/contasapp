@@ -1,6 +1,10 @@
 package com.contasapp.controllers;
 
+import java.util.ArrayList;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.validation.Valid;
 
@@ -42,19 +46,19 @@ public class PaymentController {
 	public ModelAndView listPayments() {
 		ModelAndView mv = new ModelAndView("payment/listPayments");
 		Iterable<Payment> payments = pr.findAll();
-		double totalaValue = 0;
 		for (Payment payment : payments) {
-			totalaValue = 0;
-			for (Bill bill : br.findByPayment(payment)) {
-				totalaValue += bill.getValue();
-			}
-			payment.setTotal(totalaValue);
-			
+			payment.setTotal(summarizeBills(payment));
 		}
-		//List<Double> values = new br.findByPayment(payment);
 		
 		mv.addObject("payments", payments);
 		return mv;
+	}
+
+	private Double summarizeBills(Payment payment) {
+		List<Bill> listP = new ArrayList<Bill>();
+		listP.addAll(br.findListByPayment(payment));
+		DoubleSummaryStatistics sumBill = listP.parallelStream().filter((Bill b) -> b.getValue() > 0).collect(Collectors.summarizingDouble(Bill :: getValue));
+		return sumBill.getSum();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -62,10 +66,8 @@ public class PaymentController {
 		Payment payment = pr.findById(id);
 		ModelAndView mv = new ModelAndView("payment/paymentDetail");
 		mv.addObject("payment", payment);
-
 		Iterable<Bill> bills = br.findByPayment(payment);
 		mv.addObject("bills", bills);
-
 		return mv;
 	}
 
