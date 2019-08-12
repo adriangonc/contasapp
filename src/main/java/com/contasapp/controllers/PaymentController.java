@@ -1,5 +1,7 @@
 package com.contasapp.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +42,17 @@ public class PaymentController {
 	public ModelAndView listPayments() {
 		ModelAndView mv = new ModelAndView("payment/listPayments");
 		Iterable<Payment> payments = pr.findAll();
+		double totalaValue = 0;
+		for (Payment payment : payments) {
+			totalaValue = 0;
+			for (Bill bill : br.findByPayment(payment)) {
+				totalaValue += bill.getValue();
+			}
+			payment.setTotal(totalaValue);
+			
+		}
+		//List<Double> values = new br.findByPayment(payment);
+		
 		mv.addObject("payments", payments);
 		return mv;
 	}

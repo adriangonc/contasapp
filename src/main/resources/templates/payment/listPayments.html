@@ -38,6 +38,7 @@
 				<th>Mês</th>
 				<th>Data</th>
 				<th>Observação</th>
+				<th>Total:</th>
 			</tr>
 
 		</thead>
@@ -57,6 +58,8 @@
 				<td><a th:href="${(#mvc.url('PC#deletePayment').arg(0, payment.id)).build()}" 
 					class="btn-floating btn-small waves-effect waves-light black btnDeletEdit"><i
 						class="material-icons">delete</i></a></td>
+						
+				<td><span th:text="${payment.total}"> </span></td>
 			</tr>
 
 		</tbody>
