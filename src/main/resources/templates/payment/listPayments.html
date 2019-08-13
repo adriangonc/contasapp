@@ -57,11 +57,13 @@
 					class="waves-effect waves-light btn-small"> <i
 						class="material-icons left">list</i>Contas
 				</a></td>
-				<td><a th:href="${(#mvc.url('PC#deletePayment').arg(0, payment.id)).build()}" 
+				<td><a
+					th:href="${(#mvc.url('PC#deletePayment').arg(0, payment.id)).build()}"
 					class="btn-floating btn-small waves-effect waves-light black btnDeletEdit"><i
 						class="material-icons">delete</i></a></td>
-						
-				<td><span th:text="${payment.total}"> </span></td>
+
+				<td><span class="txtSumBills" th:text="'R$ ' + ${#numbers.formatDecimal(payment.total, 1, 2)}">
+				</span></td>
 			</tr>
 
 		</tbody>
@@ -76,5 +78,6 @@
 
 	<!--JavaScript at end of body for optimized loading-->
 	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
 </body>
 </html>
