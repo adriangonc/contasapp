@@ -1,5 +1,7 @@
 package com.contasapp.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -17,5 +19,7 @@ public interface IBillRepository extends CrudRepository<Bill, String> {
 	public void deleteById(long id);
 	
 	Bill findByCodeBill(long id);
+	
+	List<Bill> findListByPayment(Payment payment);
 
 }
