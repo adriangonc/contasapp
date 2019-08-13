@@ -51,8 +51,6 @@ public class PaymentController {
 			payment.setTotal(totalaValue);
 			
 		}
-		//List<Double> values = new br.findByPayment(payment);
-		
 		mv.addObject("payments", payments);
 		return mv;
 	}
