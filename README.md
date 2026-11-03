@@ -1,4 +1,4 @@
-# 💰 ContasApp
+# 💰 Contas App
 
 Aplicação web para gerenciamento de contas e pagamentos, desenvolvida com Java e Spring Boot.
 
